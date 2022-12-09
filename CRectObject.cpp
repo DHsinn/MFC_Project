@@ -3,12 +3,14 @@
 CRectObject::CRectObject() {
 
 }
-CRectObject::CRectObject(CPoint pt, int w, int h) {
+CRectObject::CRectObject(CPoint pt, int w, int h, CString pa) {
 	m_pos = pt;
 	m_width = w;
 	m_height = h;
 	m_selected = false;
+	m_path = pa;
 }
+
 
 bool CRectObject::CheckSelected(CPoint pt)
 {
@@ -36,5 +38,8 @@ void CRectObject::Draw(CDC* pDC)
 		pDC->SelectObject(GetStockObject(BLACK_PEN));
 	}
 	*/
-	pDC->Rectangle(m_pos.x, m_pos.y, m_pos.x+m_width, m_pos.y+m_height);
+	CImage img;
+	img.Load(m_path);
+	img.Draw(*pDC, m_pos.x, m_pos.y);
+	//pDC->Rectangle(m_pos.x, m_pos.y, m_pos.x+m_width, m_pos.y+m_height);
 }

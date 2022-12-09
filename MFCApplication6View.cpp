@@ -41,9 +41,9 @@ CMFCApplication6View::CMFCApplication6View() noexcept
 	// TODO: 여기에 생성 코드를 추가합니다.
 
 	for (size_t i = 0; i <= 9; i++) {
-		obj[i] = CRectObject(CPoint(100 * (i +1), 600), 50, 50);
+		obj[i] = CRectObject(CPoint(100 * (i +1), 600), 50, 50, L"./res/pet.png");
 	}
-
+	m_stack = 0;
 	m_index = -1;
 	num = 1;
 	str.Format(L"현재 점수: %d", num);
@@ -181,7 +181,7 @@ void CMFCApplication6View::OnMouseMove(UINT nFlags, CPoint point)
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
 	if (m_index != -1) { //클릭한 도형을 현재 마우스 좌표로 이동
 		obj[m_index].m_pos = point;
-		Invalidate();
+		Invalidate(false);
 	}
 	CView::OnMouseMove(nFlags, point);
 }
@@ -191,18 +191,22 @@ void CMFCApplication6View::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
 	
-	if (obj[1].m_pos.x <= 350 && obj[1].m_pos.x >= 50 &&
-		obj[1].m_pos.y <= 450 && obj[1].m_pos.y >= 50) {
-		num = num + 1;
-		str.Format(L"현재 점수: %d", num);
-		obj[1] = CRectObject(CPoint(0, 0), 0, 0);
-		Invalidate();
-	}
-	if (m_index == 0 || m_index == 2 || m_index == 3 || m_index == 4
-		|| m_index == 5 || m_index == 6 || m_index == 7 || m_index == 8 || m_index == 9)
-	{
-		obj[m_index] = CRectObject(CPoint(100 * (m_index + 1), 600), 50, 50); ;
-		Invalidate();
+	for (int i = 0; i <= 9; i++) {
+		if (obj[i].m_pos.x <= 350 && obj[i].m_pos.x >= 50 &&
+			obj[i].m_pos.y <= 450 && obj[i].m_pos.y >= 50) {
+			num = num + 1;
+			str.Format(L"현재 점수: %d", num);
+			obj[i].m_pos = CPoint(0, m_stack*20);
+			m_stack++;
+			//obj[1] = CRectObject(CPoint(0, 0), 0, 0);
+			Invalidate();
+		}
+		if (m_index == 0 || m_index == 2 || m_index == 3 || m_index == 4
+			|| m_index == 5 || m_index == 6 || m_index == 7 || m_index == 8 || m_index == 9)
+		{
+			//obj[m_index] = CRectObject(CPoint(100 * (m_index + 1), 600), 50, 50); ;
+			Invalidate();
+		}
 	}
 	m_index = -1;
 	CView::OnLButtonUp(nFlags, point);

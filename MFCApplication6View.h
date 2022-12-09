@@ -46,6 +46,7 @@ public:
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	int m_index;
 	int num;
+	int m_stack;
 	CString str;
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	CImage back;
