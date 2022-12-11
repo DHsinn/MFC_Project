@@ -41,7 +41,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	//bool m_selected;
-	CRectObject obj[10];
+	CRectObject obj[13];
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	int m_index;

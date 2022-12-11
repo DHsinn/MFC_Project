@@ -40,8 +40,13 @@ CMFCApplication6View::CMFCApplication6View() noexcept
 {
 	// TODO: 여기에 생성 코드를 추가합니다.
 
-	for (size_t i = 0; i <= 9; i++) {
-		obj[i] = CRectObject(CPoint(100 * (i +1), 600), 50, 50, L"./res/pet.png");
+	CString pt[13] = {L"./res/pet.png", L"./res/crap.png", L"./res/gas.png", L"./res/glass.png", L"./res/onion.png", L"./res/pop.png",
+		L"./res/pos.png", L"./res/shaver.png", L"./res/tea.png", L"./res/um.png", L"./res/drug.png", L"./res/tape.png", L"./res/coffee.png" };   // 이미지 경로 배열
+
+	CString na[13] = { L"페트병", L"게딱지", L"가스", L"유리", L"양파", L"뽁뽁이", L"영수증", L"면도기", L"칫솔", L"우산", L"약", L"테이프", L"찌꺼기" };  //이름 배열
+
+	for (size_t i = 0; i <13; i++) { 
+		obj[i] = CRectObject(CPoint(100 * (i + 1), 600), 50, 50, pt[i], na[i]);
 	}
 	m_stack = 0;
 	m_index = -1;
@@ -95,7 +100,7 @@ void CMFCApplication6View::OnDraw(CDC* pDC)
 	ps.Load(L"./res/PLASTIC-removebg.png");
 	ps.Draw(pDC->m_hDC, 1550, 50);
 
-	for (size_t i = 0; i <= 9; i++) {
+	for (size_t i = 0; i <13; i++) {
 		obj[i].Draw(pDC);
 	}
 	pDC->TextOut(1000, 0, str);
@@ -165,7 +170,7 @@ void CMFCApplication6View::OnLButtonDown(UINT nFlags, CPoint point)
 		Invalidate();
 	}
 	*/
-	for (size_t i = 0; i <= 9; i++) { //최대 9개까지 클릭했다는거 인지
+	for (size_t i = 0; i < 13; i++) { //최대 9개까지 클릭했다는거 인지
 		if (obj[i].CheckSelected(point) == true) {
 			m_index = i;
 			break;
@@ -191,7 +196,7 @@ void CMFCApplication6View::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
 	
-	for (int i = 0; i <= 9; i++) {
+	for (int i = 0; i < 13; i++) {
 		if (obj[i].m_pos.x <= 350 && obj[i].m_pos.x >= 50 &&
 			obj[i].m_pos.y <= 450 && obj[i].m_pos.y >= 50) {
 			num = num + 1;

@@ -3,12 +3,13 @@
 CRectObject::CRectObject() {
 
 }
-CRectObject::CRectObject(CPoint pt, int w, int h, CString pa) {
+CRectObject::CRectObject(CPoint pt, int w, int h, CString pa, CString na) {
 	m_pos = pt;
 	m_width = w;
 	m_height = h;
 	m_selected = false;
 	m_path = pa;
+	m_name = na;
 }
 
 
@@ -39,7 +40,10 @@ void CRectObject::Draw(CDC* pDC)
 	}
 	*/
 	CImage img;
-	img.Load(m_path);
+	img.Load(m_path);  // 경로 지정 위해
 	img.Draw(*pDC, m_pos.x, m_pos.y);
+
+	pDC->DrawText(m_name, CRect(m_pos.x, m_pos.y+50, m_pos.x+50, m_pos.y+100), DT_CENTER);  //텍스트 지정 위해
+
 	//pDC->Rectangle(m_pos.x, m_pos.y, m_pos.x+m_width, m_pos.y+m_height);
 }

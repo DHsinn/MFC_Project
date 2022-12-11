@@ -10,9 +10,10 @@ public:
 
 public:
 	CRectObject();
-	CRectObject(CPoint pt, int w, int h, CString pa); // 
+	CRectObject(CPoint pt, int w, int h, CString pa, CString na); // 
 	bool CheckSelected(CPoint pt); // pt 좌표가 사각형 내부인지 체크.
 	void Draw(CDC* pDC); //pDC에 사각형 그리기
-	CString m_path;
+	CString m_path;  // 이미지 경로
+	CString m_name;  // 이름
 };
 
