@@ -43,7 +43,7 @@ void CRectObject::Draw(CDC* pDC)
 	img.Load(m_path);  // 경로 지정 위해
 	img.Draw(*pDC, m_pos.x, m_pos.y);
 
-	pDC->DrawText(m_name, CRect(m_pos.x, m_pos.y+50, m_pos.x+50, m_pos.y+100), DT_CENTER);  //텍스트 지정 위해
+	pDC->DrawText(m_name, CRect(m_pos.x, m_pos.y+100, m_pos.x+100, m_pos.y+150), DT_CENTER);  //텍스트 지정 위해
 
 	//pDC->Rectangle(m_pos.x, m_pos.y, m_pos.x+m_width, m_pos.y+m_height);
 }

@@ -40,13 +40,13 @@ CMFCApplication6View::CMFCApplication6View() noexcept
 {
 	// TODO: 여기에 생성 코드를 추가합니다.
 
-	CString pt[13] = {L"./res/pet.png", L"./res/crap.png", L"./res/gas.png", L"./res/glass.png", L"./res/onion.png", L"./res/pop.png",
-		L"./res/pos.png", L"./res/shaver.png", L"./res/tea.png", L"./res/um.png", L"./res/drug.png", L"./res/tape.png", L"./res/coffee.png" };   // 이미지 경로 배열
+	CString pt[13] = {L"./res/pet.png", L"./res/alumin.png", L"./res/gas.png", L"./res/glass.png", L"./res/banana.png", L"./res/pop.png",
+		L"./res/cabo.png", L"./res/shaver.png", L"./res/hammer.png", L"./res/um.png", L"./res/mouse.png", L"./res/phone.png", L"./res/sten.png" };   // 이미지 경로 배열
 
-	CString na[13] = { L"페트병", L"게딱지", L"가스", L"유리", L"양파", L"뽁뽁이", L"영수증", L"면도기", L"칫솔", L"우산", L"약", L"테이프", L"찌꺼기" };  //이름 배열
+	CString na[13] = { L"페트병", L"알루미늄", L"가스", L"유리", L"바나나", L"뽁뽁이", L"골판지", L"면도기", L"망치", L"우산", L"마우스", L"전화기", L"스텐" };  //이름 배열
 
 	for (size_t i = 0; i <13; i++) { 
-		obj[i] = CRectObject(CPoint(100 * (i + 1), 600), 50, 50, pt[i], na[i]);
+		obj[i] = CRectObject(CPoint(100 * (i + 1), 600), 50, 100, pt[i], na[i]);
 	}
 	m_stack = 0;
 	m_index = -1;
@@ -112,7 +112,7 @@ void CMFCApplication6View::OnDraw(CDC* pDC)
 	CBrush brush1(RGB(255, 0, 0)); //쓰레기통 좌표 알기 위한 사각형
 	CBrush* c_brush;
 	c_brush = pDC->SelectObject(&brush1);
-	pDC->Rectangle(50, 50, 300, 450);
+	//pDC->Rectangle(50, 50, 300, 450);
 
 }
 
